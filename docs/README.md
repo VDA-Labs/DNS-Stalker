@@ -17,6 +17,12 @@ additional source of targeted threat intelligence.
 DNS-Stalker was adapted from DNS-Twist 
 -------
 
+Get a leg up on the adversaries phishing!
+-------
+
+Find your adversary before they find you!
+------- 
+
 Only tested on Ubuntu 16.04!! Proabably will work on other linux.. I'll
 test and update! 
 
@@ -55,12 +61,28 @@ Execute startup script
 
 TO DO:
 -------
-Lots--
-test on other platforms
-clean up code
-get sleep
+1. Lots--
+2. Test on other platforms
+3. Clean up code
+4. Get sleep
+```
+5. Figure out error "dnstwist.py: notice: missing module: dnspython (DNS features limited)"
 
-
+try:
+	import dns.resolver
+	from dns.exception import DNSException
+	MODULE_DNSPYTHON = True
+except ImportError:
+	MODULE_DNSPYTHON = False
+	pass
+```
+^ Let me know if you know.. 
+apt install pip
+pip install dnspython
+-- still nothing --
+http://www.dnspython.org/docs/1.15.0/dns.resolver-module.html
+6. Add a domain checking tool for trust-worthiness of domains
+7. Make a docker build
 
 
 
