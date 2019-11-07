@@ -67,10 +67,10 @@ TO DO:
 -------
 1. Lots--
 2. Test on other platforms
-3. Clean up code
+<strike>3. Clean up code</strike>
 4. Get sleep
-```
-5. Figure out error "dnstwist.py: notice: missing module: dnspython (DNS features limited)"
+
+<strike>5. Figure out error "dnstwist.py: notice: missing module: dnspython (DNS features limited)"
 
 try:
 	import dns.resolver
@@ -79,12 +79,12 @@ try:
 except ImportError:
 	MODULE_DNSPYTHON = False
 	pass
-```
+
 ^ Let me know if you know.. 
 apt install pip
 pip install dnspython
 -- still nothing --
-http://www.dnspython.org/docs/1.15.0/dns.resolver-module.html
+http://www.dnspython.org/docs/1.15.0/dns.resolver-module.html</strike>
 
 6. Add a domain checking tool for trust-worthiness of domains
 7. Make a docker build
