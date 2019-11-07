@@ -2,44 +2,44 @@
 
 printf "Have to install a few things \n"
 apt install -y mailutils
+apt install -y python-pip
+pip install dnspython
 
-#Task Scheduler for starting CronTab
+
+#URL input for starting task scheduler in crontab
 printf "\n"
-printf "\n"
-printf "DNS-Stalker will execute hourly \n"
-printf "\n"
+
 printf "Input the URL you want to Stalk \n"
+printf "Example: vdalabs.com \n"
 read URL
 
 printf "\n"
 
-printf "Scheduling the following task in crontab: \n"
-echo "39 *    * * *   root    (cd "/opt/DNS-Stalker/" && './dnstwist.py --registered $URL')"
-printf "\n"
-echo "39 *    * * *   root    (cd "/opt/DNS-Stalker/" && ./dnstwist.py --registered $URL > outfile.txt)" >> /etc/crontab
-
-echo "49 *    * * *   root    (cd "/opt/DNS-Stalker/" && ./comparer.sh)" 
+#Writing to /etc/crontab with scheduled task
+echo "39 *    * * *   root    (cd "/opt/DNS-Stalker/" && python dnstwist.py --registered --format csv $URL > outfile.csv)" >> /etc/crontab
 echo "49 *    * * *   root    (cd "/opt/DNS-Stalker/" && ./comparer.sh)" >> /etc/crontab
-printf "dnstwist will be scheduled hourly on the 39 minute mark \n"
-printf "comparer (file checker/emailer) will run on 49 minute mark \n"
 
+#Email input and writing to comparer.sh
 printf "Please enter the email you want to send to: \n"
 read EMAIL
 
-printf "sending your email to comparer.sh \n"
-sed -i "s/placeholder/$EMAIL/g" /opt/DNS-Stalker/comparer.sh
+printf ""
+sed -i "s~placeholder~$EMAIL~g" /opt/DNS-Stalker/comparer.sh
 
-sleep 1
+
+#Domain input and writing to comparer.sh
 printf "Please enter the account and domain to send from: \n" 
 printf "Example, admin@gmail.com \n"
 read DOMAIN
-
-printf "Sending your input to comparer.sh \n"
+printf ""
 sed -i "s~things~$DOMAIN~g" /opt/DNS-Stalker/comparer.sh
 
-printf "Time to create the master file for comparison \n"
+#Create master.txt file by starting dnstwist
+printf ""
+printf "Making master.csv file \n"
 printf "Please wait, this may take a few minutes \n"
-python dnstwist.py --registered $URL > /opt/DNS-Stalker/master.txt
-
+printf "For longer domain names, this may take up to 20 minutes \n"
+python dnstwist.py --registered --format csv $URL > /opt/DNS-Stalker/master.csv
+printf ""
 printf "All Done! Thanks, Support VDA Labs! https://vdalabs.com \n"
-
+printf "\n"

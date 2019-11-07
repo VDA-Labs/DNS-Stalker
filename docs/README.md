@@ -14,27 +14,31 @@ Find similar-looking domains that adversaries can use to attack you. Can detect
 typosquatters, phishing attacks, fraud and corporate espionage. Useful as an
 additional source of targeted threat intelligence.
 
-DNS-Stalker was adapted from DNS-Twist 
+
+
+
+
+DNS-Stalker was adapted from dnstwist 
 -------
 
-Get a leg up on the adversaries phishing!
--------
 
-Find your adversary before they find you!
-------- 
+**Get a leg up on the adversaries phishing!**
 
-Only tested on Ubuntu 16.04!! Proabably will work on other linux.. I'll
-test and update! 
+**Find your adversary before they find you!**
+ 
+
+ 
 
 
 How to Install:
 ------------
 
-**Ubuntu 16.04.06**
+**Built on Ubuntu 18.04.06 Desktop**
 
-DNS-Stalker
+_Only tested on Ubuntu 16.04!! Proabably will work on other linux.._
+_I'll test and update!_
 
-Built on Ubuntu 18.04.06 Desktop
+
 
 First install git 
 ```
@@ -81,8 +85,12 @@ apt install pip
 pip install dnspython
 -- still nothing --
 http://www.dnspython.org/docs/1.15.0/dns.resolver-module.html
+
 6. Add a domain checking tool for trust-worthiness of domains
 7. Make a docker build
+8. allow for multiple domains input 
+9. re-write all code in python (everyone loves python)
+10. add alert capabilites for sms
 
 
 
